@@ -6,8 +6,6 @@ echo "This script will install the 42 most common tools and its dependencies."
 # Install Repositories and Packages, Update and Upgrade the system and install the 42 most common tools
 echo "Installing Francinette and its dependencies..."
 echo "Adding the repository to the sources list..."
-	sudo sed -i '1s/^/#/' /etc/apt/sources.list
-	sudo apt-add-repository multiverse
 	sudo apt-add-repository universe
 	sudo apt-add-repository restricted
 	sudo apt-add-repository main
@@ -38,7 +36,7 @@ if [ "$(uname)" != "Darwin" ]; then
 			sudo apt update -y
 			sudo apt upgrade -y
 			sudo apt install gcc clang libpq-dev libbsd-dev libncurses-dev valgrind -y
-			sudo apt install python-dev python3-pip -y
+			sudo apt install python3-pip -y
 			sudo apt install python3-dev python3-venv python3-wheel -y
 			pip3 install wheel
 			;;
@@ -127,6 +125,4 @@ sleep 2
 echo "Installing Utils..."
 sudo apt-get install curl wget git vim -y
 echo "Done."
-echo "Installation Complete. System will reboot in 5 seconds."
-sleep 5
-sudo reboot
+echo "Installation Complete. Close this window to make everything work.
