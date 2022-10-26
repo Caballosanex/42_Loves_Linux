@@ -6,11 +6,11 @@ echo "This script will install the 42 most common tools and its dependencies."
 # Install Repositories and Packages, Update and Upgrade the system and install the 42 most common tools
 echo "Installing Francinette and its dependencies..."
 echo "Adding the repository to the sources list..."
+	sudo sed -i '1s/^/#/' /etc/apt/sources.list
 	sudo apt-add-repository multiverse
 	sudo apt-add-repository universe
 	sudo apt-add-repository restricted
 	sudo apt-add-repository main
-	sudo sed -i 's/deb http:\/\/archive.canonical.com\/ubuntu\/ bionic multiverse partner/deb http:\/\/archive.canonical.com\/ubuntu\/ bionic partner/g' /etc/apt/sources.list
 	echo "Done."
 echo "Updating the sources list..."
 	sudo apt-get update -y
