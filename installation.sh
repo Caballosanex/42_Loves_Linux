@@ -15,14 +15,15 @@ fi
 # Install Repositories and Packages, Update and Upgrade the system and install the 42 most common tools
 echo "Installing Francinette and its dependencies..."
 echo "Adding the repository to the sources list..."
-	sudo add-repository multiverse
-	sudo add-repository universe
-	sudo add-repository restricted
-	sudo add-repository main
-echo "Done."
+	sudo apt-add-repository multiverse
+	sudo apt-add-repository universe
+	sudo apt-add-repository restricted
+	sudo apt-add-repository main
+	sudo sed -i 's/deb http:\/\/archive.canonical.com\/ubuntu\/ bionic multiverse partner/deb http:\/\/archive.canonical.com\/ubuntu\/ bionic partner/g' /etc/apt/sources.list
+	echo "Done."
 echo "Updating the sources list..."
-	sudo apt-get update
-	sudo apt-get upgrade
+	sudo apt-get update -y
+	sudo apt-get upgrade -y
 echo "Done."
 echo "Installing the dependencies..."
 sudo apt-get install python3 curl wget git python3-pip python3-dev gcc clang libpq-dev libbsd-dev libncurses-dev valgrind python3-venv python3-wheel -y
@@ -43,8 +44,8 @@ if [ "$(uname)" != "Darwin" ]; then
 	echo "Admin permissions needed to install C compilers, python, and upgrade current packages"
 	case $(lsb_release -is) in
 		"Ubuntu")
-			sudo apt update
-			sudo apt upgrade
+			sudo apt update -y
+			sudo apt upgrade -y
 			sudo apt install gcc clang libpq-dev libbsd-dev libncurses-dev valgrind -y
 			sudo apt install python-dev python3-pip -y
 			sudo apt install python3-dev python3-venv python3-wheel -y
