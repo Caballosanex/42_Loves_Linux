@@ -1,41 +1,34 @@
 #!/bin/sh
 
-void show_interface() {
-    echo "Welcome to the installation script of the Moulinette project.
-";
-    echo "This script will install the 42 most common tools and its dependencies.
-";
-    echo "Choose one of the following options:
-";
-    echo "1. Install All
-";
-    echo "2. Install Francinette and dependencies
-";
-    echo "3. Install Moulinette and dependencies
-";
-    echo "4. Install C language and dependencies
-";
-    echo "5. Exit
-";
-    echo "Choose one of the following options: ";
-}
+echo "Welcome to the installation script of the Moulinette project."
+echo "This script will install the 42 most common tools and its dependencies."
+read -p "Do you want to continue? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Starting installation..."
+else
+    echo "Exiting..."
+    exit 0
+fi
 
-#***************Francinette installation function***************#
-void install_francinette() {
-	echo "Installing Francinette and its dependencies...
-";
-	echo "Adding the repository to the sources list...";
-sudo add-repository multiverse
-sudo add-repository universe
-sudo add-repository restricted
-sudo add-repository main
-echo "Done.";
-echo "Updating the sources list...";
-sudo apt-get update
-sudo apt-get upgrade
-echo "Done.";
-echo "Installing the dependencies...";
+# Install Repositories and Packages, Update and Upgrade the system and install the 42 most common tools
+echo "Installing Francinette and its dependencies..."
+echo "Adding the repository to the sources list..."
+	sudo add-repository multiverse
+	sudo add-repository universe
+	sudo add-repository restricted
+	sudo add-repository main
+echo "Done."
+echo "Updating the sources list..."
+	sudo apt-get update
+	sudo apt-get upgrade
+echo "Done."
+echo "Installing the dependencies..."
 sudo apt-get install python3 curl wget git python3-pip python3-dev gcc clang libpq-dev libbsd-dev libncurses-dev valgrind python3-venv python3-wheel -y
+
+#Francinette installation
+
 cd "$HOME" || exit
 
 mkdir temp_____
@@ -114,73 +107,34 @@ fi
 # print help
 "$HOME"/francinette/tester.sh --help
 
-echo "Installation Complete. Please close this terminal window and open the terminal again for francinette to work"
-}
+echo "Francinette installation Complete. Proceeding to the next step."
+sleep 2
 
-#***************Moulinette installation function***************#
-void install_moulinette() {
-    echo "Installing Moulinette...
-";
-    echo "Installing Python3...
-";
-    sudo apt-get install python3
-    echo "Installing Python3-pip...
-";
-    sudo apt-get install python3-pip
-    echo "Installing Python3-venv...
-";
-    sudo apt-get install python3-venv
-    echo "Installing Moulinette...
-";
-    sudo apt install moulinette
-    echo "Moulinette installed successfully.
-";
-}
+# Moulinette installation
+python3 -m pip install --upgrade pip setuptools
+python3 -m pip install norminette
 
-#***************C language installation function***************#
-void install_c_language() {
-    echo "Installing C language...
-";
-    echo "Installing GCC...
-";
-    sudo apt-get install gcc
-    echo "Installing GDB...
-";
-    sudo apt-get install gdb
-    echo "Installing Valgrind...
-";
-    sudo apt-get install valgrind
-    echo "Installing C language successfully.
-";
-}
+echo "Moulinette installation Complete. Proceeding to the next step."
+sleep 2
 
-#***************Main function***************#
-void main() {
-    show_interface();
-    int option;
-    scanf("%d", &option);
-    switch(option) {
-        case 1:
-            install_francinette();
-            install_moulinette();
-            install_c_language();
-            break;
-        case 2:
-            install_francinette();
-            break;
-        case 3:
-            install_moulinette();
-            break;
-        case 4:
-            install_c_language();
-            break;
-        case 5:
-            echo "Exiting...
-";
-            break;
-        default:
-            echo "Invalid option.
-";
-            break;
-    }
-}
+# C tools installation.
+echo "Installing C tools..."
+echo "Installing C compilers..."
+sudo apt-get install gcc clang -y
+echo "Done."
+echo "Installing C libraries..."
+sudo apt-get install libpq-dev libbsd-dev libncurses-dev -y
+echo "Done."
+echo "Installing C tools..."
+sudo apt-get install valgrind -y
+echo "Done."
+echo "C tools installation Complete. Proceeding to the next step."
+sleep 2
+
+# Utils installation.
+echo "Installing Utils..."
+sudo apt-get install curl wget git vim -y
+echo "Done."
+echo "Installation Complete. System will reboot in 5 seconds."
+sleep 5
+sudo reboot
