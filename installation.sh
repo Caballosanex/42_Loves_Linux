@@ -11,7 +11,7 @@ echo "Adding the repository to the sources list..."
 	sudo apt-add-repository universe
 	sudo apt-add-repository restricted
 	sudo apt-add-repository main
-	echo "Done."
+echo "Done."
 echo "Updating the sources list..."
 	sudo apt-get update -y
 	sudo apt-get upgrade -y
