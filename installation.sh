@@ -2,15 +2,6 @@
 
 echo "Welcome to the installation script of the Moulinette project."
 echo "This script will install the 42 most common tools and its dependencies."
-read -p "Do you want to continue? (y/n) " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    echo "Starting installation..."
-else
-    echo "Exiting..."
-    exit 0
-fi
 
 # Install Repositories and Packages, Update and Upgrade the system and install the 42 most common tools
 echo "Installing Francinette and its dependencies..."
