@@ -125,4 +125,4 @@ sleep 2
 echo "Installing Utils..."
 sudo apt-get install curl wget git vim -y
 echo "Done."
-echo "Installation Complete. Close this window to make everything work.
+echo "Installation Complete. Close this window to make everything work."
