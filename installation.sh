@@ -86,12 +86,12 @@ echo "try to add alias in file: $RC_FILE"
 # set up the alias
 if ! grep "francinette=" "$RC_FILE" &> /dev/null; then
 	echo "francinette alias not present"
-	echo "\nalias francinette=%s/francinette/tester.sh\n" "$HOME" >> "$RC_FILE"
+	echo "\nalias francinette=%s~/francinette/tester.sh\n" "$HOME" >> "$RC_FILE"
 fi
 
 if ! grep "paco=" "$RC_FILE" &> /dev/null; then
 	echo "Short alias not present. Adding it"
-	echo "\nalias paco=%s/francinette/tester.sh\n" "$HOME" >> "$RC_FILE"
+	echo "\nalias paco=%s~/francinette/tester.sh\n" "$HOME" >> "$RC_FILE"
 fi
 
 # print help
