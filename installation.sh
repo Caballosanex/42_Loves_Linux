@@ -98,14 +98,12 @@ fi
 "$HOME"/francinette/tester.sh --help
 
 echo "Francinette installation Complete. Proceeding to the next step."
-sleep 2
 
 # Moulinette installation
 python3 -m pip install --upgrade pip setuptools
 python3 -m pip install norminette
 
 echo "Moulinette installation Complete. Proceeding to the next step."
-sleep 2
 
 # C tools installation.
 echo "Installing C tools..."
@@ -115,11 +113,7 @@ echo "Done."
 echo "Installing C libraries..."
 sudo apt-get install libpq-dev libbsd-dev libncurses-dev -y
 echo "Done."
-echo "Installing C tools..."
-sudo apt-get install valgrind -y
-echo "Done."
 echo "C tools installation Complete. Proceeding to the next step."
-sleep 2
 
 # Utils installation.
 echo "Installing Utils..."
