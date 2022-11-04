@@ -15,7 +15,7 @@ echo "Updating the sources list..."
 	sudo apt-get upgrade -y
 echo "Done."
 echo "Installing the dependencies..."
-sudo apt-get install python3 curl wget git python3-pip python3-dev gcc clang libpq-dev libbsd-dev libncurses-dev valgrind python3-venv python3-wheel -y
+sudo apt-get install python3 curl wget git -y
 
 #Francinette installation
 
@@ -105,18 +105,8 @@ python3 -m pip install norminette
 
 echo "Moulinette installation Complete. Proceeding to the next step."
 
-# C tools installation.
-echo "Installing C tools..."
-echo "Installing C compilers..."
-sudo apt-get install gcc clang -y
-echo "Done."
-echo "Installing C libraries..."
-sudo apt-get install libpq-dev libbsd-dev libncurses-dev -y
-echo "Done."
-echo "C tools installation Complete. Proceeding to the next step."
-
 # Utils installation.
 echo "Installing Utils..."
-sudo apt-get install curl wget git vim -y
+sudo apt-get install vim -y
 echo "Done."
 echo "Installation Complete. Close this window to make everything work."
