@@ -101,7 +101,9 @@ echo "Francinette installation Complete. Proceeding to the next step."
 
 # Moulinette installation
 
-echo "export PATH="$HOME/.local/bin:$PATH"" >> ~/.profile
+if ! grep "export PATH=$PATH:~/.local/bin" ~/.profile; then
+	echo "export PATH="$HOME/.local/bin:$PATH"" >> ~/.profile
+fi
 python3 -m pip install --upgrade pip setuptools
 python3 -m pip install norminette
 
